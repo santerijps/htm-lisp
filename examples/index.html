@@ -1,0 +1,176 @@
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>htm-lisp</title>
+        <script src="../htm-lisp.js"></script>
+    </head>
+
+    <body>
+
+        <htm-lisp font-size="30px">
+
+            <def>
+                <l>f</l>
+                <func>
+                    <list>
+                        <l>x</l>
+                    </list>
+                    <block>
+
+                        <def>
+                            <l>result</l>
+                            <list></list>
+                        </def>
+
+                        <def>
+                            <l>length</l>
+                            <len>
+                                <var>x</var>
+                            </len>
+                        </def>
+                        <if>
+                            <lt>
+                                <var>length</var>
+                                <int>2</int>
+                            </lt>
+                            <mut>
+                                <l>result</l>
+                                <append>
+                                    <var>result</var>
+                                    <var>x</var>
+                                </append>
+                            </mut>
+                            <if>
+                                <eq>
+                                    <var>length</var>
+                                    <int>2</int>
+                                </eq>
+                                <mut>
+                                    <l>result</l>
+                                    <append>
+                                        <append>
+                                            <var>result</var>
+                                            <var>x</var>
+                                        </append>
+                                        <concat>
+                                            <lst><var>x</var></lst>
+                                            <fst><var>x</var></fst>
+                                        </concat>
+                                    </append>
+                                </mut>
+                                <block>
+                                    <for>
+                                        <l>i</l>
+                                        <int>0</int>
+                                        <sub>
+                                            <var>length</var>
+                                            <int>1</int>
+                                        </sub>
+                                        <int>1</int>
+                                        <block>
+                                            <def>
+                                                <l>head</l>
+                                                <idx>
+                                                    <var>x</var>
+                                                    <var>i</var>
+                                                </idx>
+                                            </def>
+                                            <def>
+                                                <l>rest</l>
+                                                <concat>
+                                                    <slice>
+                                                        <var>x</var>
+                                                        <int>0</int>
+                                                        <var>i</var>
+                                                    </slice>
+                                                    <slice>
+                                                        <var>x</var>
+                                                        <add>
+                                                            <var>i</var>
+                                                            <int>1</int>
+                                                        </add>
+                                                        <len>
+                                                            <var>x</var>
+                                                        </len>
+                                                    </slice>
+                                                </concat>
+                                            </def>
+                                            <map>
+                                                <call>
+                                                    <var>f</var>
+                                                    <list>
+                                                        <var>rest</var>
+                                                    </list>
+                                                </call>
+                                                <l>tail</l>
+                                                <mut>
+                                                    <l>result</l>
+                                                    <append>
+                                                        <var>result</var>
+                                                        <concat>
+                                                            <var>head</var>
+                                                            <var>tail</var>
+                                                        </concat>
+                                                    </append>
+                                                </mut>
+                                            </map>
+                                        </block>
+                                    </for>
+                                </block>
+                            </if>
+                        </if>
+                        <var>result</var>
+                    </block>
+                </func>
+            </def>
+
+            <print>Give me a word to permutate!</print>
+
+            <def> <!-- word = prompt("Word:", "Hello") -->
+                <l>word</l>
+                <read>
+                    <str>Word:</str>
+                    <str>Hello</str>
+                </read>
+            </def>
+
+            <def> <!-- permutations = f(word) -->
+                <l>permutations</l>
+                <call>
+                    <var>f</var>
+                    <list>
+                        <var>word</var>
+                    </list>
+                </call>
+            </def>
+
+            <def> <!-- starts-with = prompt("Starts with:", "a") -->
+                <l>starts-with</l>
+                <read>
+                    <str>Starts with:</str>
+                    <str>a</str>
+                </read>
+            </def>
+
+            <print>
+                <filter>
+                    <var>permutations</var>
+                    <l>perm</l>
+                    <eq>
+                        <idx>
+                            <var>perm</var>
+                            <int>0</int>
+                        </idx>
+                        <var>starts-with</var>
+                    </eq>
+                </filter>
+            </print>
+
+        </htm-lisp>
+
+    </body>
+
+</html>

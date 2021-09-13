@@ -194,7 +194,7 @@ These elements are used to cast literal values into some specific type.
 ### L
 Returns the literal value. Evaluates the inner text of the element. You may want to use this (or the `str` element) when declaring or referring to variable names, as the variables are stored by name in a JavaScript object. Does not accept any child elements.
 
-``(l literalValue) => value`
+`(l literalValue) => value`
 ```html
 <!-- Evaluates to a JS Number 123 -->
 <l>123</l>
@@ -206,7 +206,7 @@ Returns the literal value. Evaluates the inner text of the element. You may want
 ### INT
 Returns an integer. Calls JS `parseInt` on the provided value.
 
-``(int value) => parseInt(value)`
+`(int value) => parseInt(value)`
 ```html
 <!-- Evaluates to a JS Number 2 -->
 <int>2.5</int>
@@ -215,7 +215,7 @@ Returns an integer. Calls JS `parseInt` on the provided value.
 ### FLOAT
 Returns an floating point number. Calls JS `parseFloat` on the provided value.
 
-``(float value) => parseFloat(value)`
+`(float value) => parseFloat(value)`
 ```html
 <!-- Evaluates to a JS Number 2.5 -->
 <int>2.5</int>
@@ -224,7 +224,7 @@ Returns an floating point number. Calls JS `parseFloat` on the provided value.
 ### STR
 Returns an string. Calls JS `toString` on the provided value.
 
-``(str value) => value.toString()`
+`(str value) => value.toString()`
 ```html
 <!-- Evaluates to a JS String "2.5" -->
 <str>2.5</str>
